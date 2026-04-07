@@ -1,64 +1,84 @@
 package Mahasiswa;
-
 public class Mapres08 {
-    Mahasiswa08[] listMhs;
-
-    Mapres08(Mahasiswa08[] listMhs) {
-        this.listMhs = listMhs;
+    // Atribut
+    private Mahasiswa08[] listMhs;
+    private int idx;
+    
+    // Konstruktor
+    public Mapres08() {
+        listMhs = new Mahasiswa08[5];
+        idx = 0;
+    }
+    
+    // Metode untuk menambah mahasiswa
+    public void tambah(Mahasiswa08 mhs) {
+        if (idx < listMhs.length) {
+            listMhs[idx] = mhs;
+            idx++;
+            System.out.println("Mahasiswa berhasil ditambahkan!");
+        } else {
+            System.out.println("Kapasitas array penuh!");
+        }
+    }
+    
+    // Metode untuk menampilkan semua mahasiswa
+    public void tampil() {
+        System.out.println("\n========== Daftar Mahasiswa ==========");
+        for (int i = 0; i < idx; i++) {
+            System.out.println((i + 1) + ". ");
+            listMhs[i].tampilkanInfo();
+            System.out.println();
+        }
+    }
+    
+    // Metode untuk menampilkan posisi
+    public void tampilPoisisi(double x, int pos) {
+        if (pos != -1) {
+            System.out.println("Data dengan nilai IPK " + x + " ditemukan!");
+            System.out.println("Posisi index: " + pos);
+        } else {
+            System.out.println("Data dengan nilai IPK " + x + " tidak ditemukan!");
+        }
+    }
+    
+    // Metode untuk menampilkan data dari hasil search
+    public void tampilDataSearch(double x, int pos) {
+        System.out.println("\n========== Hasil Pencarian ==========");
+        if (pos != -1) {
+            System.out.println("Data ditemukan pada posisi " + pos + ":");
+            listMhs[pos].tampilkanInfo();
+        } else {
+            System.out.println("Data dengan nilai IPK " + x + " tidak ditemukan");
+        }
     }
 
-
-    int sequentialSearching(double cari) {
+    // Metode untuk menampilkan data menggunakan sequential search berdasarkan nilai IPK
+    public int sequentialSearching(double cari) {
         int posisi = -1;
-        for (int j = 0; j < listMhs.length; j++) {
-           
-            if (listMhs[j] != null && Math.abs(listMhs[j].ipk - cari) < 0.0001) {
-                posisi = j;
+        for (int i = 0; i < idx; i++) {
+            if (listMhs[i].nilaiIpk == cari) {
+                posisi = i;
                 break;
             }
         }
         return posisi;
     }
-
-    void tampilPosisi(double x, int pos) {
-        System.out.println("================================");
-        if (pos != -1) {
-          
-            System.out.println("Data IPK " + x + " ditemukan pada indeks ke-" + pos);
-        } else {
-            System.out.println("Data IPK " + x + " tidak ditemukan");
-        }
-        System.out.println("================================");
-    }
-
-   
-    void tampilDataSearch(double x, int pos) {
-        if (pos != -1) {
-            // Fix 4: format rapi dan konsisten
-            System.out.println("NIM   : " + listMhs[pos].nim);
-            System.out.println("Nama  : " + listMhs[pos].nama);
-            System.out.println("Kelas : " + listMhs[pos].kelas);
-            System.out.println("IPK   : " + x);
-        } else {
-            System.out.println("Data IPK " + x + " tidak ditemukan.");
-        }
     
-    }
 
-    int findbinarySearch(double cari, int left, int right) {
+    // Metode untuk menampilkan data menggunakan binary search berdasarkan nilai IPK
+    int findBinarySearch(double cari, int left, int right) {
         int mid;
         if (right >= left) {
-            mid = (left+right) / 2;
-            if (cari==listMhs[mid].ipk) {
-                return mid;
+             mid = (left + right) / 2;
+            if (cari == listMhs[mid].nilaiIpk) {
+                return (mid);
             }
-            else if (listMhs[mid].ipk > cari) {
-                return findbinarySearch(cari, left, mid - 1);
+            else if (listMhs[mid].nilaiIpk > cari) {
+                return findBinarySearch(cari, left, mid - 1);
+            } else {
+            return findBinarySearch(cari, mid + 1, right);
             }
-            else {
-                return findbinarySearch(cari, mid + 1, right);            }
         }
-
         return -1;
-    }
+    }   
 }

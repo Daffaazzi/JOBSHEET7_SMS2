@@ -1,36 +1,26 @@
 package Mahasiswa;
-
 public class Mahasiswa08 {
-    String nim;
-    String nama;
-    String kelas;
-    double ipk;
-
-    static Mahasiswa08[] listMhs;
-    static int idx;
-
-    // Konstruktor default
-    Mahasiswa08() {
-
+    
+    public String nama;
+    public String nim;
+    public double nilaiIpk;
+    public String kelas;
+    
+    public Mahasiswa08() {
     }
     
-    Mahasiswa08(String nim, String nama, String kelas, double ipk) {
-        this.nim = nim;
-        this.nama = nama;
-        this.ipk = ipk;
-        this.kelas = kelas;
+    public Mahasiswa08(String nm, String name, String kls, double ip) {
+        this.nim = nm;
+        this.nama = name;
+        this.kelas = kls;
+        this.nilaiIpk = ip;
     }
-
-    void tampilInformasi() {
+    
+    public void tampilkanInfo() {
+        System.out.println("=== Informasi Mahasiswa ===");
         System.out.println("Nama: " + nama);
         System.out.println("NIM: " + nim);
-        System.out.println("IPK: " + ipk);
+        System.out.println("Nilai IPK: " + nilaiIpk);
         System.out.println("Kelas: " + kelas);
     }
-
-    void tampil() {
-        System.out.println(nim + "\t" + nama + "\t" + kelas + "\t" + ipk);
-    }
-
-   
 }
