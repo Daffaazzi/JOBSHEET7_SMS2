@@ -42,5 +42,23 @@ public class Mapres08 {
         } else {
             System.out.println("Data IPK " + x + " tidak ditemukan.");
         }
+    
+    }
+
+    int findbinarySearch(double cari, int left, int right) {
+        int mid;
+        if (right >= left) {
+            mid = (left+right) / 2;
+            if (cari==listMhs[mid].ipk) {
+                return mid;
+            }
+            else if (listMhs[mid].ipk > cari) {
+                return findbinarySearch(cari, left, mid - 1);
+            }
+            else {
+                return findbinarySearch(cari, mid + 1, right);            }
+        }
+
+        return -1;
     }
 }
