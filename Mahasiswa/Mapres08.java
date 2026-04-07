@@ -1,16 +1,15 @@
 package Mahasiswa;
 public class Mapres08 {
-    // Atribut
+    
     private Mahasiswa08[] listMhs;
     private int idx;
     
-    // Konstruktor
+   
     public Mapres08() {
         listMhs = new Mahasiswa08[5];
         idx = 0;
     }
     
-    // Metode untuk menambah mahasiswa
     public void tambah(Mahasiswa08 mhs) {
         if (idx < listMhs.length) {
             listMhs[idx] = mhs;
@@ -21,7 +20,6 @@ public class Mapres08 {
         }
     }
     
-    // Metode untuk menampilkan semua mahasiswa
     public void tampil() {
         System.out.println("\n========== Daftar Mahasiswa ==========");
         for (int i = 0; i < idx; i++) {
@@ -31,7 +29,7 @@ public class Mapres08 {
         }
     }
     
-    // Metode untuk menampilkan posisi
+
     public void tampilPoisisi(double x, int pos) {
         if (pos != -1) {
             System.out.println("Data dengan nilai IPK " + x + " ditemukan!");
@@ -41,7 +39,7 @@ public class Mapres08 {
         }
     }
     
-    // Metode untuk menampilkan data dari hasil search
+  
     public void tampilDataSearch(double x, int pos) {
         System.out.println("\n========== Hasil Pencarian ==========");
         if (pos != -1) {
@@ -52,7 +50,6 @@ public class Mapres08 {
         }
     }
 
-    // Metode untuk menampilkan data menggunakan sequential search berdasarkan nilai IPK
     public int sequentialSearching(double cari) {
         int posisi = -1;
         for (int i = 0; i < idx; i++) {
@@ -65,7 +62,6 @@ public class Mapres08 {
     }
     
 
-    // Metode untuk menampilkan data menggunakan binary search berdasarkan nilai IPK
     int findBinarySearch(double cari, int left, int right) {
         int mid;
         if (right >= left) {
